@@ -30,10 +30,10 @@ export type Week = {
 // Represents a single month
 export type Month = {
   year: number; // Year of the month
+  number: number; // Month number (1–12)
   name: MonthName; // Month name (e.g., January, February)
   days: Day[]; // All days in the month
   weeks: Week[]; // Organized into weeks
-  isCurrentMonth: boolean; // Whether this is the currently displayed month
 };
 
 // Represents the overall calendar for a particular display

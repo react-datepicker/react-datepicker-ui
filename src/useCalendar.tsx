@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Day, Month } from "./types/month.types";
+
 import {
   CalendarOptions,
   defaultCalendarOptions,
@@ -13,6 +13,7 @@ import {
 } from "./utils/month.utils";
 import { DateRange } from "./types/range.type";
 import { getDateByDayMonthAndYear } from "./utils/dates.utils";
+import { Day, Month } from "./types/calendar.types";
 
 const useCalendar = (calendarOptions?: CalendarOptions) => {
   const [rangeValue, setRangeValue] = useState<DateRange | undefined>();
@@ -53,9 +54,13 @@ const useCalendar = (calendarOptions?: CalendarOptions) => {
     setValue(getDateByDayMonthAndYear(day, month, year).toDate());
   };
 
-  const register = (month: Month, day: Day) => {
+  const register = (
+    month: Month,
+    day: Day
+  ): { onClick: () => void; key: string } => {
     return {
       onClick: () => onClick(day, month, month.year),
+      key: `${month.number}-${day.number}-${month.year}`,
     };
   };
 

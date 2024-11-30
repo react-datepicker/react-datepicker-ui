@@ -1,12 +1,17 @@
 import dayjs, { Dayjs } from "dayjs";
+import weekDay from "dayjs/plugin/weekday";
+import isBetween from "dayjs/plugin/isBetween";
 import { Day, Month, MonthName } from "../types/month.types";
+
+dayjs.extend(weekDay);
+dayjs.extend(isBetween);
 
 const isMonthName = (name: string): name is MonthName => {
   return Object.values(MonthName).includes(name as MonthName);
 };
 
-export const newDate = () => {
-  return dayjs();
+export const newDate = (date?: Date) => {
+  return dayjs(date);
 };
 
 export const getDateByDayMonthAndYear = (
@@ -17,8 +22,12 @@ export const getDateByDayMonthAndYear = (
   return dayjs(`${month.name} ${day.number}, ${year}`, "MMMM D, YYYY");
 };
 
-export const getDateByYearAndMonth = (year: number, month: number) => {
-  return dayjs(`${month} 1, ${year}`, "M D, YYYY");
+export const getDateByYearAndMonth = (
+  year: number,
+  month: number,
+  day: number = 1
+) => {
+  return dayjs(`${month} ${day}, ${year}`, "M D, YYYY");
 };
 
 /**
@@ -58,4 +67,29 @@ export const getStartOfWeekByDate = (date: Dayjs) => {
 
 export const getEndOfWeekByDate = (date: Dayjs) => {
   return date.endOf("week");
+};
+
+export const isToday = (date: Dayjs) => {
+  return date.isSame(newDate(), "day");
+};
+
+export const isWeekend = (date: Dayjs) => {
+  return date.weekday() === 6 || date.weekday() === 7;
+};
+
+export const isBefore = (date: Dayjs, dateToCompare: Dayjs) => {
+  return date.isBefore(dateToCompare);
+};
+
+export const isSame = (date: Dayjs, dateToCompare: Dayjs) => {
+  return date.isSame(dateToCompare);
+};
+
+export const isBetweenDates = (
+  date: Dayjs,
+  startDate: Dayjs,
+  endDate: Dayjs
+) => {
+  const isIt = date.isBetween(startDate, endDate);
+  return isIt;
 };
