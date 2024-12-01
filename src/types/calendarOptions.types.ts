@@ -5,6 +5,7 @@ export type CalendarOptions = {
   startYear?: number;
   monthsNum?: number;
   numberOfDisplayedMonths?: number;
+  isRangePicker?: boolean;
 };
 
 export const defaultCalendarOptions: Required<CalendarOptions> = {
@@ -12,4 +13,5 @@ export const defaultCalendarOptions: Required<CalendarOptions> = {
   startYear: 2024,
   monthsNum: 1,
   numberOfDisplayedMonths: 1,
+  isRangePicker: false,
 };
