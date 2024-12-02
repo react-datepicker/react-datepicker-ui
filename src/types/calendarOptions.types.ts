@@ -3,15 +3,21 @@ import { MonthName } from "./month.types";
 export type CalendarOptions = {
   startMonth?: MonthName;
   startYear?: number;
-  monthsNum?: number;
   numberOfDisplayedMonths?: number;
   isRangePicker?: boolean;
+  minDate?: Date;
+  maxDate?: Date;
+  allowFuture?: boolean;
+  allowPast?: boolean;
 };
 
-export const defaultCalendarOptions: Required<CalendarOptions> = {
+export const defaultCalendarOptions: CalendarOptions = {
   startMonth: MonthName.January,
   startYear: 2024,
-  monthsNum: 1,
   numberOfDisplayedMonths: 1,
   isRangePicker: false,
+  minDate: undefined,
+  maxDate: undefined,
+  allowFuture: true,
+  allowPast: true,
 };
