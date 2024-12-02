@@ -1,0 +1,14 @@
+.daysGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 16px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.monthHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
