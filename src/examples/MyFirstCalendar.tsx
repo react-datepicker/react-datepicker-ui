@@ -31,7 +31,11 @@ const MyFirstCalendar = () => {
                 return week.days.map((day) => {
                   return (
                     <div
-                      style={{ opacity: day.isInCurrentMonth ? "1" : "0.5" }}
+                      style={{
+                        opacity: day.isInCurrentMonth ? "1" : "0.5",
+                        backgroundColor: day.isToday ? "yellow" : "white",
+                        color: day.isWeekend ? "red" : "black",
+                      }}
                       {...register(month, day)}
                     >
                       {day.number}
