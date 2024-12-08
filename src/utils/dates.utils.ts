@@ -77,8 +77,12 @@ export const isWeekend = (date: Dayjs) => {
   return date.weekday() === 6 || date.weekday() === 7;
 };
 
-export const isBefore = (date: Dayjs, dateToCompare: Dayjs) => {
-  return date.isBefore(dateToCompare);
+export const isBeforeDay = (date: Dayjs, dateToCompare: Dayjs) => {
+  return date.isBefore(dateToCompare, "day");
+};
+
+export const isAfterDay = (date: Dayjs, dateToCompare: Dayjs) => {
+  return date.isAfter(dateToCompare, "day");
 };
 
 export const isSame = (date: Dayjs, dateToCompare: Dayjs) => {

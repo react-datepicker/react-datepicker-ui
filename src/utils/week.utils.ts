@@ -2,7 +2,7 @@ import { Day, Week } from "../types/calendar.types";
 import {
   getEndOfWeekByDate,
   getStartOfWeekByDate,
-  isBefore,
+  isBeforeDay,
   isSame,
   isToday,
   isWeekend,
@@ -19,7 +19,7 @@ export const getWeeksForDays = (days: Day[]): Week[] => {
   let currentDay = startOfFirstWeek;
 
   while (
-    isBefore(currentDay, endOfLastWeek) ||
+    isBeforeDay(currentDay, endOfLastWeek) ||
     isSame(currentDay, endOfLastWeek)
   ) {
     const daysInWeek = Array.from({ length: 7 }, (_, i) => {
