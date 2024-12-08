@@ -52,7 +52,7 @@ export const generateDaysForMonth = (
         date: currentDayjsDate.toDate(),
         isToday: isToday(currentDayjsDate),
         isWeekend: isWeekend(dayjsDate),
-        disabed: false,
+        disabled: false,
         isInCurrentMonth: true,
       };
     }

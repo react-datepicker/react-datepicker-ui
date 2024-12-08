@@ -1,70 +1,40 @@
+import { Day } from "../types/calendar.types";
 import useCalendar from "../useCalendar";
 
-const Test = () => {
-  const {
-    register,
-    value,
-    displayedMonths,
-    previousMonth,
-    nextMonth,
-    nextYear,
-    previousYear,
-  } = useCalendar();
-
+const CalendarDay = ({ day }: { day: Day }) => {
   return (
-    <div>
-      <h1>{value?.toString()}</h1>
-      <div style={{ display: "flex", flexDirection: "row", gap: 32 }}>
-        <button onClick={(e) => previousYear()}>Previous Year</button>
-        <button onClick={(e) => previousMonth()}>Previous Month</button>
-        {displayedMonths.map((month) => {
-          return (
-            <div key={month.name}>
-              <div>{month.year}</div>
-              <div>{month.name}</div>
-              <div>
-                {month.weeks.map((week) => {
-                  return (
-                    <div
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(7, 1fr)",
-                        gap: 8,
-                      }}
-                      key={JSON.stringify(week.days)}
-                    >
-                      {week.days.map((day) => {
-                        return (
-                          <div
-                            style={{
-                              color: day.isInCurrentMonth ? "black" : "grey",
-                              opacity: day.isInCurrentMonth ? 1 : 0.5,
-                              borderRadius: "50%",
-                              border: day.isToday ? "1px dotted black" : "none",
-                              padding: 8,
-                              cursor: "pointer",
-                            }}
-                            {...register(month, day)}
-                          >
-                            {day.number}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  );
-                })}
-                {/* {month.days.map((day) => (
-                    <div {...register(month, day)}>{day.number}</div>
-                  ))} */}
-              </div>
-            </div>
-          );
-        })}
-        <button onClick={(e) => nextMonth()}>Next Month</button>
-        <button onClick={(e) => nextYear()}>Next Year</button>
-      </div>
+    <div
+      className={`day ${day.isToday ? "today" : ""} 
+        ${day.isWeekend ? "weekend" : ""}
+        ${day.isInCurrentMonth ? "current-month" : "not-current-month"}
+        ${day.disabled ? "disabled" : ""}`}
+    >
+      {day.date.getDate()}
     </div>
   );
 };
 
-export default Test;
+const Calendar = () => {
+  const { displayedMonths } = useCalendar({
+    allowPast: true,
+    minDate: new Date(2020, 0, 1),
+  });
+
+  return (
+    <div className="calendar">
+      {displayedMonths.map((month) => (
+        <div key={month.name} className="month">
+          {month.weeks.map((week, weekIndex) => (
+            <div key={weekIndex} className="week">
+              {week.days.map((day, dayIndex) => (
+                <CalendarDay key={dayIndex} day={day} />
+              ))}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Calendar;

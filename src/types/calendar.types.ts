@@ -17,7 +17,7 @@ export enum MonthName {
 export type Day = {
   number: number; // Day of the month (1–31)
   date: Date; // Full JavaScript Date object
-  disabed: boolean; // Whether this day is disabled
+  disabled: boolean; // Whether this day is disabled
   isToday: boolean; // Whether this is the current day
   isWeekend: boolean; // Whether this day is a weekend
   isInCurrentMonth: boolean; // Whether the day belongs to the displayed month
