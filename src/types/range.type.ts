@@ -1,4 +1,6 @@
+import { Dayjs } from "dayjs";
+
 export type DateRange = {
-  start: Date;
-  end: Date;
+  startDate: Dayjs | null;
+  endDate: Dayjs | null;
 };
