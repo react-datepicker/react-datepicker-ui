@@ -1,5 +1,4 @@
 import useCalendar from "../useCalendar";
-import "./style.css";
 
 const MyFirstDateRangeCalendar = () => {
   const {
