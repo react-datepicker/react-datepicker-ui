@@ -74,7 +74,7 @@ export const isToday = (date: Dayjs) => {
 };
 
 export const isWeekend = (date: Dayjs) => {
-  return date.weekday() === 6 || date.weekday() === 7;
+  return date.weekday() === 5 || date.weekday() === 6;
 };
 
 export const isBeforeDay = (date: Dayjs, dateToCompare: Dayjs) => {

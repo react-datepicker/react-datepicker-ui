@@ -25,6 +25,7 @@ export const getWeeksForDays = (days: Day[]): Week[] => {
     const daysInWeek = Array.from({ length: 7 }, (_, i) => {
       const day = currentDay.add(i, "day");
       const match = days.find((d) => isSame(newDate(d.date), day));
+
       return (
         match || {
           number: day.date(),
@@ -32,6 +33,8 @@ export const getWeeksForDays = (days: Day[]): Week[] => {
           isToday: isToday(day),
           isWeekend: isWeekend(day),
           isInCurrentMonth: false,
+          disabled: false,
+          weekday: day.weekday(),
         }
       );
     });
