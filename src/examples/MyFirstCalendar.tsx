@@ -3,17 +3,19 @@ import "./style.css";
 
 const MyFirstCalendar = () => {
   const {
+    value,
     displayedMonths,
     register,
     nextMonth,
     nextYear,
     previousMonth,
     previousYear,
-  } = useCalendar();
+  } = useCalendar({ allowFuture: false });
 
   return (
     <div>
       <h1>My first calendar</h1>
+      <h5>{value?.toDateString()}</h5>
       {displayedMonths.map((month) => {
         return (
           <div key={month.name}>
