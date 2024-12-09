@@ -12,46 +12,65 @@ import {
   getPreviousYearForDisplayedMonths,
 } from "./utils/month.utils";
 import { DateRange } from "./types/range.type";
-import { getDateByDayMonthAndYear } from "./utils/dates.utils";
+import { getDateByDayMonthAndYear, getWeekdays } from "./utils/dates.utils";
 import { Day, Month } from "./types/calendar.types";
+import { useDateRangePicker } from "./useDateRange";
 
 const useCalendar = (calendarOptions?: CalendarOptions) => {
-  const [rangeValue, setRangeValue] = useState<DateRange | undefined>();
+  const { range, isRangeComplete, setDate } = useDateRangePicker();
   const [value, setValue] = useState<Date | undefined>();
 
-  const options = useMemo<Required<CalendarOptions>>(
+  const weekDays = useMemo(() => getWeekdays(), []);
+
+  const options = useMemo<CalendarOptions>(
     () => ({ ...defaultCalendarOptions, ...calendarOptions }),
     [calendarOptions, defaultCalendarOptions]
   );
 
-  const { numberOfDisplayedMonths } = options;
+  const { numberOfDisplayedMonths } = options || defaultCalendarOptions;
 
   const [displayedMonths, setDisplayedMonths] = useState<Array<Month>>(
-    getDefaultDisPlayedMonths(numberOfDisplayedMonths)
+    getDefaultDisPlayedMonths(options)
   );
 
   const nextMonth = () => {
-    const newMonths = getNextMonthForDisplayedMonths(displayedMonths, 1);
+    const newMonths = getNextMonthForDisplayedMonths(
+      displayedMonths,
+      1,
+      options
+    );
     setDisplayedMonths(newMonths);
   };
 
   const previousMonth = () => {
-    const newMonths = getPreviousMonthForDisplayedMonths(displayedMonths, 1);
+    const newMonths = getPreviousMonthForDisplayedMonths(
+      displayedMonths,
+      1,
+      options
+    );
     setDisplayedMonths(newMonths);
   };
 
   const nextYear = () => {
-    const newMonths = getNextYearForDisplayedMonths(displayedMonths);
+    const newMonths = getNextYearForDisplayedMonths(displayedMonths, options);
     setDisplayedMonths(newMonths);
   };
 
   const previousYear = () => {
-    const newMonths = getPreviousYearForDisplayedMonths(displayedMonths);
+    const newMonths = getPreviousYearForDisplayedMonths(
+      displayedMonths,
+      options
+    );
     setDisplayedMonths(newMonths);
   };
 
   const onClick = (day: Day, month: Month, year: number) => {
-    setValue(getDateByDayMonthAndYear(day, month, year).toDate());
+    if (day.disabled) return;
+    if (calendarOptions?.isRangePicker) {
+      setDate(getDateByDayMonthAndYear(day, month, year));
+    } else {
+      setValue(getDateByDayMonthAndYear(day, month, year).toDate());
+    }
   };
 
   const register = (
@@ -66,6 +85,7 @@ const useCalendar = (calendarOptions?: CalendarOptions) => {
 
   return {
     value,
+    rangeValue: range,
     displayedMonths,
     previousMonth,
     nextMonth,
@@ -73,6 +93,7 @@ const useCalendar = (calendarOptions?: CalendarOptions) => {
     nextYear,
     onClick,
     register,
+    weekDays,
   };
 };
 

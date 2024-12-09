@@ -34,7 +34,11 @@ export const isDateDisabled = (
   return false;
 };
 
-export const generateDaysForMonth = (month: number, year: number): Day[] => {
+export const generateDaysForMonth = (
+  month: number,
+  year: number,
+  calendarOptions: CalendarOptions
+): Day[] => {
   const dayjsDate = getDateByYearAndMonth(year, month);
   return Array.from({ length: getDaysInMonthByDate(dayjsDate) }).map(
     (_, index) => {
@@ -48,7 +52,7 @@ export const generateDaysForMonth = (month: number, year: number): Day[] => {
         date: currentDayjsDate.toDate(),
         isToday: isToday(currentDayjsDate),
         isWeekend: isWeekend(currentDayjsDate),
-        disabled: false,
+        disabled: isDateDisabled(currentDayjsDate.toDate(), calendarOptions),
         isInCurrentMonth: true,
         weekDay: currentDayjsDate.weekday(),
       };

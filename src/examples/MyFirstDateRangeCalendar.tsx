@@ -1,23 +1,25 @@
 import useCalendar from "../useCalendar";
 import "./style.css";
 
-const MyFirstCalendar = () => {
+const MyFirstDateRangeCalendar = () => {
   const {
-    value,
+    rangeValue,
     displayedMonths,
     register,
     nextMonth,
     nextYear,
     previousMonth,
     previousYear,
+    weekDays,
   } = useCalendar({
+    isRangePicker: true,
     maxDate: new Date("2024-12-21"),
   });
 
   return (
     <div>
-      <h1>My first calendar</h1>
-      <h5>{value?.toDateString()}</h5>
+      <h1>My first date range calendar</h1>
+      <h5>{JSON.stringify(rangeValue)}</h5>
       {displayedMonths.map((month) => {
         return (
           <div key={month.name}>
@@ -31,6 +33,13 @@ const MyFirstCalendar = () => {
               <button onClick={() => nextYear()}>{">>>"}</button>
             </div>
             <div className="daysGrid">
+              {weekDays.map((day) => {
+                return (
+                  <div key={day} className="text-xs">
+                    {day.substring(0, 2)}
+                  </div>
+                );
+              })}
               {month.weeks.map((week) => {
                 return week.days.map((day) => {
                   return (
@@ -55,4 +64,4 @@ const MyFirstCalendar = () => {
   );
 };
 
-export default MyFirstCalendar;
+export default MyFirstDateRangeCalendar;

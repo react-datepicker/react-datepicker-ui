@@ -1,4 +1,5 @@
 import { Day, Week } from "../types/calendar.types";
+import { CalendarOptions } from "../types/calendarOptions.types";
 import {
   getEndOfWeekByDate,
   getStartOfWeekByDate,
@@ -8,8 +9,12 @@ import {
   isWeekend,
   newDate,
 } from "./dates.utils";
+import { isDateDisabled } from "./day.utils";
 
-export const getWeeksForDays = (days: Day[]): Week[] => {
+export const getWeeksForDays = (
+  days: Day[],
+  calendarOptions: CalendarOptions
+): Week[] => {
   if (days.length === 0) return [];
 
   const startOfFirstWeek = getStartOfWeekByDate(newDate(days[0].date));
@@ -33,7 +38,7 @@ export const getWeeksForDays = (days: Day[]): Week[] => {
           isToday: isToday(day),
           isWeekend: isWeekend(day),
           isInCurrentMonth: false,
-          disabled: false,
+          disabled: isDateDisabled(day.toDate(), calendarOptions),
           weekday: day.weekday(),
         }
       );

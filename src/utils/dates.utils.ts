@@ -1,13 +1,19 @@
 import dayjs, { Dayjs } from "dayjs";
 import weekDay from "dayjs/plugin/weekday";
 import isBetween from "dayjs/plugin/isBetween";
+import localeData from "dayjs/plugin/localeData";
 import { Day, Month, MonthName } from "../types/month.types";
 
 dayjs.extend(weekDay);
 dayjs.extend(isBetween);
+dayjs.extend(localeData);
 
 const isMonthName = (name: string): name is MonthName => {
   return Object.values(MonthName).includes(name as MonthName);
+};
+
+export const getWeekdays = () => {
+  return dayjs.weekdays();
 };
 
 export const newDate = (date?: Date) => {
