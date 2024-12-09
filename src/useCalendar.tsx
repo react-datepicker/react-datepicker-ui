@@ -17,7 +17,14 @@ import { Day, Month } from "./types/calendar.types";
 import { useDateRangePicker } from "./useDateRange";
 
 const useCalendar = (calendarOptions?: CalendarOptions) => {
-  const { range, isRangeComplete, setDate } = useDateRangePicker();
+  const {
+    range,
+    isRangeComplete,
+    setDate,
+    register: registerRange,
+    isInCompletedRange,
+    isInHoverRange,
+  } = useDateRangePicker();
   const [value, setValue] = useState<Date | undefined>();
 
   const weekDays = useMemo(() => getWeekdays(), []);
@@ -80,6 +87,7 @@ const useCalendar = (calendarOptions?: CalendarOptions) => {
     return {
       onClick: () => onClick(day, month, month.year),
       key: `${month.number}-${day.number}-${month.year}`,
+      ...(calendarOptions?.isRangePicker ? registerRange(month, day) : {}),
     };
   };
 
@@ -94,6 +102,8 @@ const useCalendar = (calendarOptions?: CalendarOptions) => {
     onClick,
     register,
     weekDays,
+    isInCompletedRange,
+    isInHoverRange,
   };
 };
 

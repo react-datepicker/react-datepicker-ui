@@ -21,7 +21,7 @@ const MyFirstCalendar = () => {
       {displayedMonths.map((month) => {
         return (
           <div key={month.name}>
-            <div className="monthHeader">
+            <div className="flex justify-between items-center gap-2">
               <button onClick={() => previousYear()}>{"<<<"}</button>
               <button onClick={() => previousMonth()}>{"<<"}</button>
               <h2>
@@ -30,7 +30,8 @@ const MyFirstCalendar = () => {
               <button onClick={() => nextMonth()}>{">>"}</button>
               <button onClick={() => nextYear()}>{">>>"}</button>
             </div>
-            <div className="daysGrid">
+
+            <div className="grid grid-cols-7 gap-1 w-fit m-auto">
               {month.weeks.map((week) => {
                 return week.days.map((day) => {
                   return (
