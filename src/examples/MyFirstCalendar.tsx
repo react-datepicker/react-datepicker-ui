@@ -1,6 +1,11 @@
+import { FC } from "react";
 import useCalendar from "../useCalendar";
 
-const MyFirstCalendar = () => {
+const MyFirstCalendar: FC<{
+  value?: Date;
+  onChange: (date: Date) => void;
+  mode: "single" | "range";
+}> = () => {
   const {
     value,
     displayedMonths,
@@ -9,6 +14,7 @@ const MyFirstCalendar = () => {
     nextYear,
     previousMonth,
     previousYear,
+    setYear,
   } = useCalendar({
     maxDate: new Date("2024-12-21"),
   });
@@ -17,6 +23,12 @@ const MyFirstCalendar = () => {
     <div>
       <h1>My first calendar</h1>
       <h5>{value?.toDateString()}</h5>
+      <button onClick={(_) => setYear(2020)}>2020</button>
+      <button onClick={(_) => setYear(2021)}>2021</button>
+      <button onClick={(_) => setYear(2022)}>2022</button>
+      <button onClick={(_) => setYear(2023)}>2023</button>
+      <button onClick={(_) => setYear(2024)}>2024</button>
+      <button onClick={(_) => setYear(2025)}>2025</button>
       {displayedMonths.map((month) => {
         return (
           <div key={month.name}>
@@ -35,7 +47,9 @@ const MyFirstCalendar = () => {
                 return week.days.map((day) => {
                   return (
                     <div
-                      className={`cursor-pointer hover:bg-gray-100 aspect-square p-1 rounded ${
+                      className={`cursor-pointer ${
+                        day.disabled ? "" : "hover:bg-gray-100"
+                      } aspect-square p-1 rounded ${
                         day.isInCurrentMonth ? "opacity-100" : "opacity-50"
                       } ${day.isWeekend ? "bg-green-100" : ""} ${
                         day.isToday ? "bg-blue-100" : ""

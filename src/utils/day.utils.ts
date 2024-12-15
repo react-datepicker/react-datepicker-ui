@@ -11,7 +11,7 @@ import { CalendarOptions } from "../types/calendarOptions.types";
 
 export const isDateDisabled = (
   date: Date,
-  calendarOptions: CalendarOptions
+  calendarOptions: CalendarOptions<boolean>
 ): boolean => {
   const { allowPast, allowFuture, minDate, maxDate } = calendarOptions;
   const checkedDate = newDate(date);
@@ -37,7 +37,7 @@ export const isDateDisabled = (
 export const generateDaysForMonth = (
   month: number,
   year: number,
-  calendarOptions: CalendarOptions
+  calendarOptions: CalendarOptions<boolean>
 ): Day[] => {
   const dayjsDate = getDateByYearAndMonth(year, month);
   return Array.from({ length: getDaysInMonthByDate(dayjsDate) }).map(

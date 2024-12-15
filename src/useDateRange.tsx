@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, SetStateAction } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import {
   getDateByDayMonthAndYear,
@@ -9,25 +9,50 @@ import {
 import { DateRange } from "./types/range.type";
 import { Day, Month } from "./types/calendar.types";
 import { isInRange } from "./utils/date-range.utils";
+import { CalendarOptions } from "./types/calendarOptions.types";
 
-export const useDateRangePicker = () => {
+export const useDateRangePicker = <IsRange extends boolean>(
+  options: CalendarOptions<IsRange>,
+  controlledValue?: DateRange | null,
+  onChange?: (date: SetStateAction<DateRange>) => void
+) => {
+  const isControlled = useMemo(() => onChange !== undefined, [onChange]);
+
   const [hoveredDate, setHoveredDate] = useState<Dayjs | null>(null);
   const [range, setRange] = useState<DateRange>({
     startDate: null,
     endDate: null,
   });
 
+  const selectedRangeValue = useMemo(() => {
+    if (isControlled && controlledValue) {
+      return controlledValue;
+    } else {
+      return range;
+    }
+  }, [controlledValue, range]);
+
+  const setSelectedRangeValue = useMemo(() => {
+    if (isControlled) return onChange;
+    return setRange;
+  }, [isControlled, onChange, setRange]);
+
   const isRangeComplete = useMemo(() => {
-    return Boolean(range.startDate && range.endDate);
-  }, [range.startDate, range.endDate]);
+    return Boolean(selectedRangeValue.startDate && selectedRangeValue.endDate);
+  }, [selectedRangeValue.startDate, selectedRangeValue.endDate]);
 
   const setDate = useCallback(
     (selectedDate: Dayjs) => {
-      setRange((prevRange) => {
-        const { startDate, endDate } = prevRange;
+      setSelectedRangeValue?.((prevRange) => {
+        const { startDate, endDate } = prevRange || {
+          startDate: undefined,
+          endDate: undefined,
+        };
 
-        if (!startDate || isRangeComplete) {
+        if (!startDate) {
           return { startDate: selectedDate, endDate: null };
+        } else if (isRangeComplete) {
+          return { startDate: null, endDate: null };
         } else if (startDate && !endDate) {
           if (isBeforeDay(selectedDate, startDate)) {
             return { startDate: selectedDate, endDate: null };
@@ -42,34 +67,61 @@ export const useDateRangePicker = () => {
     [isRangeComplete]
   );
 
-  const isInHoverRange = useCallback(
+  const shouldHighlightDay = useCallback(
     (date: Date) => {
       if (
-        !hoveredDate ||
-        !range.startDate ||
-        isRangeComplete ||
-        isBeforeDay(newDate(date), range.startDate) ||
-        isSame(newDate(date), range.startDate)
+        !selectedRangeValue.startDate ||
+        isBeforeDay(newDate(date), selectedRangeValue.startDate) ||
+        isSame(newDate(date), selectedRangeValue.startDate)
       ) {
         return false;
       }
 
-      return isInRange(newDate(date), range.startDate, hoveredDate);
+      if (options.shouldHighlightRangeInHover && hoveredDate) {
+        return isInRange(
+          newDate(date),
+          selectedRangeValue.startDate,
+          hoveredDate
+        );
+      }
+
+      if (isRangeComplete) {
+        return isInRange(
+          newDate(date),
+          selectedRangeValue.startDate,
+          selectedRangeValue.endDate
+        );
+      }
+
+      return false;
     },
-    [hoveredDate, isRangeComplete, range.startDate, range.endDate]
+    [
+      hoveredDate,
+      isRangeComplete,
+      selectedRangeValue.startDate,
+      selectedRangeValue.endDate,
+    ]
   );
 
   const isInCompletedRange = useCallback(
+    // TODO remove if not needed anymore becuase of shouldHighlightDay
     (date: Date) => {
-      return isInRange(newDate(date), range.startDate, range.endDate);
+      return isInRange(
+        newDate(date),
+        selectedRangeValue.startDate,
+        selectedRangeValue.endDate
+      );
     },
-    [range.startDate, range.endDate]
+    [selectedRangeValue.startDate, selectedRangeValue.endDate]
   );
 
-  const register = (month: Month, day: Day) => {
+  const register = (
+    day: Day
+  ): { onMouseEnter: () => void; onMouseLeave: () => void } => {
     return {
       onMouseEnter: () => {
-        setHoveredDate(getDateByDayMonthAndYear(day, month, month.year));
+        if (isRangeComplete) return;
+        setHoveredDate(newDate(day.date));
       },
       onMouseLeave: () => {
         setHoveredDate(null);
@@ -78,11 +130,11 @@ export const useDateRangePicker = () => {
   };
 
   return {
-    range,
+    range: selectedRangeValue,
     setDate,
     isRangeComplete,
     register,
-    isInHoverRange,
+    shouldHighlightDay,
     isInCompletedRange,
   };
 };

@@ -1,10 +1,11 @@
 import { Dayjs } from "dayjs";
 import { isAfterDay } from "./dates.utils";
+import { DateRange } from "@/types/range.type";
 
 export const isInRange = (
   date: Dayjs,
-  startDate: Dayjs | null,
-  endDate: Dayjs | null
+  startDate: Dayjs | null | undefined,
+  endDate: Dayjs | null | undefined
 ) => {
   if (!startDate) return false; // No range if startDate is missing
   if (!endDate) {
@@ -13,4 +14,10 @@ export const isInRange = (
   }
   // Check if the date is within the range
   return date.isBetween(startDate, endDate, "day", "[]");
+};
+
+export const isDateRange = (
+  date: Date | DateRange | undefined | null
+): date is DateRange => {
+  return date ? "startDate" in date && "endDate" in date : false;
 };

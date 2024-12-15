@@ -103,3 +103,25 @@ export const getPreviousYearForDisplayedMonths = (
     };
   });
 };
+
+export const getNewMonthsForYear = (
+  months: Month[],
+  year: number,
+  calendarOptions: CalendarOptions
+): Month[] => {
+  return months.map((month) => {
+    const newDate = getDateByYearAndMonth(year, month.number);
+    const days = generateDaysForMonth(
+      newDate.month() + 1,
+      newDate.year(),
+      calendarOptions
+    );
+    return {
+      name: getMonthNameByDate(newDate),
+      number: newDate.month() + 1,
+      year: newDate.year(),
+      days,
+      weeks: getWeeksForDays(days, calendarOptions),
+    };
+  });
+};

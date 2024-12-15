@@ -1,17 +1,23 @@
 import { MonthName } from "./month.types";
+import { DateRange } from "./range.type";
 
-export type CalendarOptions = {
+export type DateValue<IsRange extends boolean> = IsRange extends true
+  ? DateRange | undefined | null
+  : Date | null | undefined;
+
+export type CalendarOptions<IsRange extends boolean> = {
   startMonth?: MonthName;
   startYear?: number;
   numberOfDisplayedMonths?: number;
-  isRangePicker?: boolean;
+  isRangePicker?: IsRange;
   minDate?: Date;
   maxDate?: Date;
   allowFuture?: boolean;
   allowPast?: boolean;
+  shouldHighlightRangeInHover?: boolean;
 };
 
-export const defaultCalendarOptions: CalendarOptions = {
+export const defaultCalendarOptions: CalendarOptions<false> = {
   startMonth: MonthName.January,
   startYear: 2024,
   numberOfDisplayedMonths: 1,
@@ -20,4 +26,5 @@ export const defaultCalendarOptions: CalendarOptions = {
   maxDate: undefined,
   allowFuture: true,
   allowPast: true,
+  shouldHighlightRangeInHover: true,
 };

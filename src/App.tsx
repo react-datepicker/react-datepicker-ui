@@ -1,12 +1,12 @@
+import { DatePickerDemo } from "./components/ui/datePicker";
 import "./App.css";
-import MyFirstCalendar from "./examples/MyFirstCalendar";
-import MyFirstDateRangeCalendar from "./examples/MyFirstDateRangeCalendar";
 
 function App() {
   return (
     <div className="flex gap-8 flex-col">
-      <MyFirstCalendar />
-      <MyFirstDateRangeCalendar />
+      {/* <MyFirstCalendar /> */}
+      <DatePickerDemo />
+      {/* <MyFirstDateRangeCalendar /> */}
     </div>
   );
 }

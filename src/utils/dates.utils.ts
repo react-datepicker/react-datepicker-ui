@@ -36,13 +36,6 @@ export const getDateByYearAndMonth = (
   return dayjs(`${month} ${day}, ${year}`, "M D, YYYY");
 };
 
-/**
- * @deprecated The method should not be used and removed
- */
-export const getDateByYearAndMonthName = (year: number, monthName: string) => {
-  return dayjs(`${monthName} 1, ${year}`, "MMMM D, YYYY");
-};
-
 export const getDaysInMonthByDate = (date: Dayjs) => {
   return date.daysInMonth();
 };
@@ -102,4 +95,8 @@ export const isBetweenDates = (
 ) => {
   const isIt = date.isBetween(startDate, endDate);
   return isIt;
+};
+
+export const isDate = (date: any): date is Date => {
+  return date instanceof Date;
 };
