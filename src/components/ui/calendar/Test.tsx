@@ -1,5 +1,5 @@
-import { Day } from "../types/calendar.types";
-import useCalendar from "../useCalendar";
+import { Day } from "../../../types/calendar.types";
+import useCalendar from "../../../useCalendar";
 
 const CalendarDay = ({ day }: { day: Day }) => {
   return (

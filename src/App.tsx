@@ -3,10 +3,8 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="flex gap-8 flex-col">
-      {/* <MyFirstCalendar /> */}
+    <div className="flex items-center justify-center h-screen">
       <DatePickerDemo />
-      {/* <MyFirstDateRangeCalendar /> */}
     </div>
   );
 }

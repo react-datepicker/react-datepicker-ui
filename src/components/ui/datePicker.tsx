@@ -12,8 +12,9 @@ import {
 } from "@/components/ui/popover";
 import dayjs from "dayjs";
 
-import MyFirstDateRangeCalendar from "@/examples/MyFirstDateRangeCalendar";
+import MyFirstDateRangeCalendar from "@/components/ui/calendar/MyFirstDateRangeCalendar";
 import { DateRange } from "@/types/range.type";
+import Calendar from "./calendar/calendar";
 
 export function DatePickerDemo() {
   const [date, setDate] = React.useState<DateRange | null | undefined>({
@@ -44,11 +45,7 @@ export function DatePickerDemo() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
-        <MyFirstDateRangeCalendar
-          mode="single"
-          value={date}
-          onChange={setDate}
-        />
+        <Calendar isRangePicker={true} value={date} onChange={setDate} />
       </PopoverContent>
     </Popover>
   );

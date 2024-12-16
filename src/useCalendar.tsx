@@ -1,4 +1,10 @@
-import { SetStateAction, useCallback, useMemo, useState } from "react";
+import {
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import {
   CalendarOptions,
@@ -15,7 +21,7 @@ import {
 } from "./utils/month.utils";
 
 import { getWeekdays, isDate, isSame, newDate } from "./utils/dates.utils";
-import { Day, Month } from "./types/calendar.types";
+import { Day, Month, Register } from "./types/calendar.types";
 import { useDateRangePicker } from "./useDateRange";
 import { DateRange } from "./types/range.type";
 import { isDateRange } from "./utils/date-range.utils";
@@ -57,6 +63,9 @@ const useCalendar = <IsRange extends boolean>(
     }),
     [calendarOptions, defaultCalendarOptions]
   );
+
+  useEffect(() => {}), [options.numberOfDisplayedMonths];
+
   const weekDays = useMemo(() => getWeekdays(), []);
 
   const [displayedMonths, setDisplayedMonths] = useState<Array<Month>>(
@@ -122,7 +131,7 @@ const useCalendar = <IsRange extends boolean>(
     setDisplayedMonths(newMonths);
   };
 
-  const register = (
+  const register: Register = (
     month: Month,
     day: Day
   ): { onClick: () => void; key: string } => {

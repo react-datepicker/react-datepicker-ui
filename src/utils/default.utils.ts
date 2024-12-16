@@ -8,7 +8,7 @@ import { getWeeksForDays } from "./week.utils";
 import { CalendarOptions } from "../types/calendarOptions.types";
 
 export const getDefaultDisPlayedMonths: (
-  calendarOptions: CalendarOptions
+  calendarOptions: CalendarOptions<boolean>
 ) => Month[] = (calendarOptions) => {
   const today = newDate();
 

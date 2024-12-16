@@ -13,7 +13,7 @@ export const addMonthsToMonth = (month: Month, months: number) => {
 export const getPreviousMonthForDisplayedMonths = (
   months: Month[],
   steps: number = 1,
-  calendarOptions: CalendarOptions
+  calendarOptions: CalendarOptions<boolean>
 ): Month[] => {
   return [
     ...Array.from({ length: steps }).map((_, index) => {
@@ -38,7 +38,7 @@ export const getPreviousMonthForDisplayedMonths = (
 export const getNextMonthForDisplayedMonths = (
   months: Month[],
   steps: number = 1,
-  calendarOptions: CalendarOptions
+  calendarOptions: CalendarOptions<boolean>
 ): Month[] => {
   const lastMonth = months[months.length - 1];
 
@@ -64,7 +64,7 @@ export const getNextMonthForDisplayedMonths = (
 
 export const getNextYearForDisplayedMonths = (
   months: Month[],
-  calendarOptions: CalendarOptions
+  calendarOptions: CalendarOptions<boolean>
 ): Month[] => {
   return months.map((month) => {
     const nextYearDate = addMonthsToMonth(month, 12);
@@ -85,7 +85,7 @@ export const getNextYearForDisplayedMonths = (
 
 export const getPreviousYearForDisplayedMonths = (
   months: Month[],
-  calendarOptions: CalendarOptions
+  calendarOptions: CalendarOptions<boolean>
 ): Month[] => {
   return months.map((month) => {
     const previousYearDate = addMonthsToMonth(month, -12);
@@ -107,7 +107,7 @@ export const getPreviousYearForDisplayedMonths = (
 export const getNewMonthsForYear = (
   months: Month[],
   year: number,
-  calendarOptions: CalendarOptions
+  calendarOptions: CalendarOptions<boolean>
 ): Month[] => {
   return months.map((month) => {
     const newDate = getDateByYearAndMonth(year, month.number);

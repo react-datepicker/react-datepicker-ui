@@ -43,3 +43,11 @@ export type Calendar = {
   displayedMonths: Month[]; // Months being displayed (could be 1 or multiple for a range)
   weeksToShow: Week[]; // All weeks to render, including overflow (e.g., last days of the previous month or first days of the next month)
 };
+
+export type Register = (
+  month: Month,
+  day: Day
+) => {
+  onClick: () => void;
+  key: string;
+};
