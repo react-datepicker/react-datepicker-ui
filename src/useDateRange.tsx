@@ -1,13 +1,8 @@
 import { useState, useCallback, useMemo, SetStateAction } from "react";
-import dayjs, { Dayjs } from "dayjs";
-import {
-  getDateByDayMonthAndYear,
-  isBeforeDay,
-  isSame,
-  newDate,
-} from "./utils/dates.utils";
+import { Dayjs } from "dayjs";
+import { isBeforeDay, isSame, newDate } from "./utils/dates.utils";
 import { DateRange } from "./types/range.type";
-import { Day, Month } from "./types/calendar.types";
+import { Day } from "./types/calendar.types";
 import { isInRange } from "./utils/date-range.utils";
 import { CalendarOptions } from "./types/calendarOptions.types";
 
@@ -30,7 +25,7 @@ export const useDateRangePicker = <IsRange extends boolean>(
     } else {
       return range;
     }
-  }, [controlledValue, range]);
+  }, [controlledValue, range, isControlled]);
 
   const setSelectedRangeValue = useMemo(() => {
     if (isControlled) return onChange;
@@ -64,7 +59,7 @@ export const useDateRangePicker = <IsRange extends boolean>(
         return prevRange;
       });
     },
-    [isRangeComplete]
+    [isRangeComplete, setSelectedRangeValue]
   );
 
   const shouldHighlightDay = useCallback(
@@ -100,6 +95,7 @@ export const useDateRangePicker = <IsRange extends boolean>(
       isRangeComplete,
       selectedRangeValue.startDate,
       selectedRangeValue.endDate,
+      options.shouldHighlightRangeInHover,
     ]
   );
 

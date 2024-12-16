@@ -1,5 +1,3 @@
-import dayjs from "dayjs";
-
 import { addMonthsToDate, getMonthNameByDate, newDate } from "./dates.utils";
 
 import { generateDaysForMonth } from "./day.utils";

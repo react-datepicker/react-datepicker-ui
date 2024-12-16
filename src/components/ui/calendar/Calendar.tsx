@@ -1,5 +1,5 @@
 import useCalendar from "../../../useCalendar";
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { DateRange } from "@/types/range.type";
 
 import Toolbar from "./Toolbar";
@@ -25,10 +25,6 @@ const Calendar = <IsRange extends boolean>({
   onChange,
   value,
 }: CalendarProps<IsRange>) => {
-  const [numberOfDisplayedMonths, setNumberOfDisplayedMonths] = useState(
-    isRangePicker ? 2 : 1
-  );
-
   const {
     displayedMonths,
     register,
@@ -39,7 +35,7 @@ const Calendar = <IsRange extends boolean>({
     isSelected,
     setYear,
   } = useCalendar<IsRange>(
-    { numberOfDisplayedMonths, isRangePicker },
+    { numberOfDisplayedMonths: isRangePicker ? 2 : 1, isRangePicker },
     value,
     (date) => onChange(date)
   );

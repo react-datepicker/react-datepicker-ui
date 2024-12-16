@@ -1,10 +1,4 @@
-import {
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { SetStateAction, useCallback, useMemo, useState } from "react";
 
 import {
   CalendarOptions,
@@ -41,7 +35,7 @@ const useCalendar = <IsRange extends boolean>(
     } else {
       return value;
     }
-  }, [controlledValue, value]);
+  }, [controlledValue, value, isControlled]);
 
   const setSelectedSingleDate = useCallback(
     (date: Date) => {
@@ -61,10 +55,8 @@ const useCalendar = <IsRange extends boolean>(
       ...calendarOptions,
       isRangePicker: calendarOptions?.isRangePicker,
     }),
-    [calendarOptions, defaultCalendarOptions]
+    [calendarOptions]
   );
-
-  useEffect(() => {}), [options.numberOfDisplayedMonths];
 
   const weekDays = useMemo(() => getWeekdays(), []);
 
@@ -117,7 +109,7 @@ const useCalendar = <IsRange extends boolean>(
     setDisplayedMonths(newMonths);
   };
 
-  const onClick = (day: Day, month: Month, year: number) => {
+  const onClick = (day: Day) => {
     if (day.disabled) return;
     if (calendarOptions?.isRangePicker) {
       setDate(newDate(day.date));
@@ -136,7 +128,7 @@ const useCalendar = <IsRange extends boolean>(
     day: Day
   ): { onClick: () => void; key: string } => {
     return {
-      onClick: () => onClick(day, month, month.year),
+      onClick: () => onClick(day),
       key: `${month.number}-${day.number}-${month.year}`,
       ...(calendarOptions?.isRangePicker ? registerRange(day) : {}),
     };
@@ -157,6 +149,7 @@ const useCalendar = <IsRange extends boolean>(
   );
 
   return {
+    value,
     selectedSingleDate,
     rangeValue: range,
     displayedMonths,

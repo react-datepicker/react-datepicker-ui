@@ -100,6 +100,6 @@ export const isBetweenDates = (
   return isIt;
 };
 
-export const isDate = (date: any): date is Date => {
+export const isDate = (date: unknown): date is Date => {
   return date instanceof Date;
 };
