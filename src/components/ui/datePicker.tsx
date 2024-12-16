@@ -3,7 +3,7 @@ import * as React from "react";
 import { Popover, PopoverContent } from "@/components/ui/popover";
 import dayjs from "dayjs";
 
-import Calendar from "./calendar/calendar";
+import Calendar from "./calendar/Calendar";
 import { CalendarOptions } from "@/types/calendarOptions.types";
 import DateInput from "./dateInput";
 

@@ -4,7 +4,7 @@ import { Popover, PopoverContent } from "@/components/ui/popover";
 import dayjs from "dayjs";
 
 import { DateRange } from "@/types/range.type";
-import Calendar from "./calendar/calendar";
+import Calendar from "./calendar/Calendar";
 import { CalendarOptions } from "@/types/calendarOptions.types";
 import DateInput from "./dateInput";
 import { DATE_DISPLAY_SHORT_FORMAT } from "@/utils/dates.utils";

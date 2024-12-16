@@ -13,7 +13,7 @@ import { isDateDisabled } from "./day.utils";
 
 export const getWeeksForDays = (
   days: Day[],
-  calendarOptions: CalendarOptions
+  calendarOptions: CalendarOptions<boolean>
 ): Week[] => {
   if (days.length === 0) return [];
 
