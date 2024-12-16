@@ -6,6 +6,7 @@ import Toolbar from "./Toolbar";
 
 import MonthsRow from "./MonthsRow";
 import { CalendarOptions } from "@/types/calendarOptions.types";
+import { Separator } from "../separator";
 
 export type CalendarProps<IsRange extends boolean> =
   CalendarOptions<IsRange> & {
@@ -25,7 +26,7 @@ const Calendar = <IsRange extends boolean>({
   value,
 }: CalendarProps<IsRange>) => {
   const [numberOfDisplayedMonths, setNumberOfDisplayedMonths] = useState(
-    isRangePicker ? 2 : 0
+    isRangePicker ? 2 : 1
   );
 
   const {
@@ -44,8 +45,9 @@ const Calendar = <IsRange extends boolean>({
   );
 
   return (
-    <div className="p-2">
+    <div className="p-2 flex flex-col gap-2">
       <Toolbar setYear={setYear} displayedMonths={displayedMonths} />
+      <Separator />
       <MonthsRow
         {...{
           displayedMonths,

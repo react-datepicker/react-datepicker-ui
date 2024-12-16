@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 
 import { Month } from "@/types/calendar.types";
 
@@ -17,8 +17,15 @@ const Toolbar: FC<{
 
   const yearsToShow = useMemo(() => generateYearsArray(1800, 2100), []);
 
+  const [tabIndex, setTabIndex] = useState<number>(-1); // Prevent focus initially
+
+  useEffect(() => {
+    // Allow focus after component is mounted
+    setTabIndex(0);
+  }, []);
+
   return (
-    <div className="flex flex-row justify-end mb-1">
+    <div className="flex flex-row justify-end">
       <div>
         <Select
           value={displayedMonths[0].year.toString()}
@@ -26,7 +33,7 @@ const Toolbar: FC<{
             !isNaN(parseInt(e)) ? setYear(parseInt(e)) : undefined
           }
         >
-          <SelectTrigger className="w-[135px] h-[25px]">
+          <SelectTrigger tabIndex={tabIndex} className="w-[135px] h-[25px]">
             <>
               {displayedMonths[0].year}{" "}
               {!isAllOneYear

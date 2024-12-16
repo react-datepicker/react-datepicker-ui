@@ -8,6 +8,9 @@ dayjs.extend(weekDay);
 dayjs.extend(isBetween);
 dayjs.extend(localeData);
 
+export const DATE_DISPLAY_SHORT_FORMAT = "MMM D, YYYY";
+export const DATE_DISPLAY_FORMAT = "MMMM D, YYYY";
+
 const isMonthName = (name: string): name is MonthName => {
   return Object.values(MonthName).includes(name as MonthName);
 };
@@ -25,7 +28,7 @@ export const getDateByDayMonthAndYear = (
   month: Month,
   year: number
 ) => {
-  return dayjs(`${month.name} ${day.number}, ${year}`, "MMMM D, YYYY");
+  return dayjs(`${month.name} ${day.number}, ${year}`, DATE_DISPLAY_FORMAT);
 };
 
 export const getDateByYearAndMonth = (
