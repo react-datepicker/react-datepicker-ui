@@ -3,6 +3,7 @@ name: Bundlesize Check
 on:
   push:
     branches: [main]
+  pull_request:
 
 jobs:
   check-bundlesize:
