@@ -1,4 +1,4 @@
-[![CI](https://github.com/react-datepicker/useCalendar/actions/workflows/ci.yml/badge.svg)](https://github.com/react-datepicker/useCalendar/actions/workflows/ci.yml)
+[![CI & Tests](https://github.com/react-datepicker/useCalendar/actions/workflows/ci.yml/badge.svg)](https://github.com/react-datepicker/useCalendar/actions/workflows/ci.yml)
 
 <image src="https://github.com/user-attachments/assets/7061d873-5f25-405f-b1ce-aa1bdeb0e332" height="200px" width="200px" align="center" />
 
