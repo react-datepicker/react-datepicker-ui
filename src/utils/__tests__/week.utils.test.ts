@@ -84,7 +84,7 @@ describe("getWeeksForDays", () => {
     // Check second week's Sunday
     const firstDaySecondWeek = result[1].days[0];
     expect(firstDaySecondWeek.number).toBe(4); // February 4
-    expect(firstDaySecondWeek.isWeekend).toBe(false); // Sunday
+    expect(firstDaySecondWeek.isWeekend).toBe(true); // Sunday
   });
 
   it("should mark weekends correctly", () => {
@@ -102,8 +102,9 @@ describe("getWeeksForDays", () => {
     const result = getWeeksForDays(testDays, defaultCalendarOptions);
 
     // Saturday and Sunday should be marked as weekend
-    expect(result[0].days[5].isWeekend).toBe(true); // Saturday
-    expect(result[0].days[6].isWeekend).toBe(true); // Sunday
-    expect(result[0].days[0].isWeekend).toBe(false); // Monday
+    expect(result[0].days[5].isWeekend).toBe(false); // Friday
+    expect(result[0].days[6].isWeekend).toBe(true); // Saturday
+    expect(result[0].days[0].isWeekend).toBe(true); // Sunday
+    expect(result[0].days[1].isWeekend).toBe(false); // Monday
   });
 });
