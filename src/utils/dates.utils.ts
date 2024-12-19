@@ -3,6 +3,7 @@ import weekDay from "dayjs/plugin/weekday";
 import isBetween from "dayjs/plugin/isBetween";
 import localeData from "dayjs/plugin/localeData";
 import { Day, Month, MonthName } from "../types/month.types";
+import { LocaleKey, LocaleWeekends } from "./locale.utils";
 
 dayjs.extend(weekDay);
 dayjs.extend(isBetween);
@@ -75,8 +76,8 @@ export const isToday = (date: Dayjs) => {
   return date.isSame(newDate(), "day");
 };
 
-export const isWeekend = (date: Dayjs) => {
-  return date.weekday() === 5 || date.weekday() === 6;
+export const isWeekend = (date: Dayjs, locale: LocaleKey = "en") => {
+  return LocaleWeekends[locale].includes(date.weekday());
 };
 
 export const isBeforeDay = (date: Dayjs, dateToCompare: Dayjs) => {

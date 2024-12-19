@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { isDateDisabled, generateDaysForMonth } from "../day.utils";
+import "dayjs/locale/en"; // or your desired locale
+import { LocaleKey } from "../locale.utils";
 
 describe("day.utils", () => {
   describe("isDateDisabled", () => {
@@ -56,6 +58,7 @@ describe("day.utils", () => {
       allowFuture: true,
       minDate: undefined,
       maxDate: undefined,
+      locale: "en" as LocaleKey,
     };
 
     it("should generate correct number of days for a month", () => {
@@ -81,12 +84,27 @@ describe("day.utils", () => {
     });
 
     it("should mark weekends correctly", () => {
-      const days = generateDaysForMonth(2, 2024, baseOptions); // February 2024
+      const days = generateDaysForMonth(2, 2024, baseOptions);
+
+      expect(days[0].isWeekend).toBe(false);
+      expect(days[1].isWeekend).toBe(false);
+      expect(days[2].isWeekend).toBe(true);
+      expect(days[3].isWeekend).toBe(true);
+      expect(days[4].isWeekend).toBe(false);
+    });
+
+    it("should mark weekends correctly in he locale", () => {
+      const days = generateDaysForMonth(2, 2024, {
+        ...baseOptions,
+        locale: "he",
+      });
       expect(days[0].isWeekend).toBe(false);
       expect(days[1].isWeekend).toBe(true);
       expect(days[2].isWeekend).toBe(true);
       expect(days[3].isWeekend).toBe(false);
       expect(days[4].isWeekend).toBe(false);
+      expect(days[5].isWeekend).toBe(false);
+      expect(days[6].isWeekend).toBe(false);
     });
   });
 });

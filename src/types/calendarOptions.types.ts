@@ -1,3 +1,4 @@
+import { LocaleKey } from "@/utils/locale.utils";
 import { MonthName } from "./month.types";
 import { DateRange } from "./range.type";
 
@@ -15,6 +16,7 @@ export type CalendarOptions<IsRange extends boolean> = {
   allowFuture?: boolean;
   allowPast?: boolean;
   shouldHighlightRangeInHover?: boolean;
+  locale?: LocaleKey;
 };
 
 export const defaultCalendarOptions: CalendarOptions<false> = {
@@ -27,4 +29,5 @@ export const defaultCalendarOptions: CalendarOptions<false> = {
   allowFuture: true,
   allowPast: true,
   shouldHighlightRangeInHover: true,
+  locale: "en",
 };
