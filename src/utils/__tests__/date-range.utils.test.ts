@@ -57,8 +57,11 @@ describe("date-range utils", () => {
       const invalidRange2 = { endDate: new Date() };
       const invalidRange3 = {};
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect(isDateRange(invalidRange1 as any)).toBeFalsy();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect(isDateRange(invalidRange2 as any)).toBeFalsy();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       expect(isDateRange(invalidRange3 as any)).toBeFalsy();
     });
   });
