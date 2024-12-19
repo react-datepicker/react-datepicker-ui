@@ -51,7 +51,7 @@ export const generateDaysForMonth = (
         number: index + 1,
         date: currentDayjsDate.toDate(),
         isToday: isToday(currentDayjsDate),
-        isWeekend: isWeekend(currentDayjsDate),
+        isWeekend: isWeekend(currentDayjsDate, calendarOptions.locale),
         disabled: isDateDisabled(currentDayjsDate.toDate(), calendarOptions),
         isInCurrentMonth: true,
         weekDay: currentDayjsDate.weekday(),

@@ -36,7 +36,7 @@ export const getWeeksForDays = (
           number: day.date(),
           date: day.toDate(),
           isToday: isToday(day),
-          isWeekend: isWeekend(day),
+          isWeekend: isWeekend(day, calendarOptions.locale),
           isInCurrentMonth: false,
           disabled: isDateDisabled(day.toDate(), calendarOptions),
           weekday: day.weekday(),
