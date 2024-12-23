@@ -5,10 +5,8 @@ import { describe, expect, it } from "vitest";
 
 describe("generateMonthsByYearAndMonths", () => {
   it("should generate correct months when switching from December to next year", () => {
-    // Arrange
     const mockCalendarOptions = {
       numberOfDisplayedMonths: 2,
-      // ... other options as needed
     };
 
     const mockMonths: Month[] = [
