@@ -1,9 +1,9 @@
-import { addMonthsToDate, getMonthNameByDate, newDate } from "./dates.utils";
+import { Month } from "@/types/calendar.types";
+import { CalendarOptions } from "@/types/calendarOptions.types";
 
+import { addMonthsToDate, getMonthNameByDate, newDate } from "./dates.utils";
 import { generateDaysForMonth } from "./day.utils";
-import { Month } from "../types/calendar.types";
 import { getWeeksForDays } from "./week.utils";
-import { CalendarOptions } from "../types/calendarOptions.types";
 
 export const getDefaultDisPlayedMonths: (
   calendarOptions: CalendarOptions<boolean>

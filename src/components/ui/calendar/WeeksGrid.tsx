@@ -1,7 +1,9 @@
 import { FC } from "react";
-import WeekDaysRow from "./WeekdaysRow";
 import { WeekdayNames } from "dayjs";
+
 import { Month, Register } from "@/types/calendar.types";
+
+import WeekDaysRow from "./WeekdaysRow";
 import DayComp from "./Day";
 
 const WeeksGrid: FC<{

@@ -1,7 +1,8 @@
 import dayjs from "dayjs";
 
-import { Month } from "../types/calendar.types";
-import { CalendarOptions } from "../types/calendarOptions.types";
+import { Month } from "@/types/calendar.types";
+import { CalendarOptions } from "@/types/calendarOptions.types";
+
 import { getDateByYearAndMonth, getMonthNameByDate } from "./dates.utils";
 import { generateDaysForMonth } from "./day.utils";
 import { getWeeksForDays } from "./week.utils";

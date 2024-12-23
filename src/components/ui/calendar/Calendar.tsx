@@ -1,12 +1,13 @@
-import useCalendar from "../../../useCalendar";
 import { Dispatch, SetStateAction } from "react";
-import { DateRange } from "@/types/range.type";
 
-import Toolbar from "./Toolbar";
+import { DateRange } from "@/types/range.type";
+import { CalendarOptions } from "@/types/calendarOptions.types";
+
+import useCalendar from "../../../useCalendar";
+import { Separator } from "../separator";
 
 import MonthsRow from "./MonthsRow";
-import { CalendarOptions } from "@/types/calendarOptions.types";
-import { Separator } from "../separator";
+import Toolbar from "./Toolbar";
 
 export type CalendarProps<IsRange extends boolean> =
   CalendarOptions<IsRange> & {

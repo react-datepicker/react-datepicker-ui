@@ -1,6 +1,7 @@
-import RangeDatePicker from "./components/ui/rangeDatePicker";
+import RangeDatePicker from "@/components/ui/rangeDatePicker";
+import DatePicker from "@/components/ui/datePicker";
+
 import "./App.css";
-import DatePicker from "./components/ui/datePicker";
 
 function App() {
   return (

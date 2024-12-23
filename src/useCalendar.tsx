@@ -4,21 +4,20 @@ import {
   CalendarOptions,
   DateValue,
   defaultCalendarOptions,
-} from "./types/calendarOptions.types";
-import { getDefaultDisPlayedMonths } from "./utils/default.utils";
+} from "@/types/calendarOptions.types";
+import { getDefaultDisPlayedMonths } from "@/utils/default.utils";
 import {
   getNewMonthsForYear,
   getNextMonthForDisplayedMonths,
   getNextYearForDisplayedMonths,
   getPreviousMonthForDisplayedMonths,
   getPreviousYearForDisplayedMonths,
-} from "./utils/month.utils";
-
-import { getWeekdays, isDate, isSame, newDate } from "./utils/dates.utils";
-import { Day, Month, Register } from "./types/calendar.types";
-import { useDateRangePicker } from "./useDateRange";
-import { DateRange } from "./types/range.type";
-import { isDateRange } from "./utils/date-range.utils";
+} from "@/utils/month.utils";
+import { getWeekdays, isDate, isSame, newDate } from "@/utils/dates.utils";
+import { Day, Month, Register } from "@/types/calendar.types";
+import { useDateRangePicker } from "@/useDateRange";
+import { DateRange } from "@/types/range.type";
+import { isDateRange } from "@/utils/date-range.utils";
 
 const useCalendar = <IsRange extends boolean>(
   calendarOptions?: CalendarOptions<IsRange>,

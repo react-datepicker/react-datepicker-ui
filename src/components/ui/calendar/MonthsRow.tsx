@@ -1,8 +1,11 @@
-import { Month, Register } from "@/types/calendar.types";
 import { FC } from "react";
+import { WeekdayNames } from "dayjs";
+
+import { Month, Register } from "@/types/calendar.types";
+
 import MonthHeader from "./MonthHeader";
 import WeeksGrid from "./WeeksGrid";
-import { WeekdayNames } from "dayjs";
+
 
 const MonthsRow: FC<{
   displayedMonths: Month[];

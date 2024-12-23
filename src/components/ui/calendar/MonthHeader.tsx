@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { Month } from "@/types/calendar.types";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { FC } from "react";
+
+import { Button } from "@/components/ui/button";
+import { Month } from "@/types/calendar.types";
 
 const MonthHeader: FC<{
   previousMonth: () => void;

@@ -1,5 +1,6 @@
-import { Day, Week } from "../types/calendar.types";
-import { CalendarOptions } from "../types/calendarOptions.types";
+import { Day, Week } from "@/types/calendar.types";
+import { CalendarOptions } from "@/types/calendarOptions.types";
+
 import {
   getEndOfWeekByDate,
   getStartOfWeekByDate,

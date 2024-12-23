@@ -1,6 +1,7 @@
+import { FC } from "react";
+
 import { Month, Register, Day } from "@/types/calendar.types";
 import { cn } from "@/utils/css-utils";
-import { FC } from "react";
 
 const DayComp: FC<{
   register: Register;
