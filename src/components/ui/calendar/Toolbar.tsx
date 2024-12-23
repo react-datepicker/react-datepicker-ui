@@ -1,9 +1,9 @@
 import { FC, useEffect, useMemo, useState } from "react";
 
 import { Month } from "@/types/calendar.types";
+import { generateYearsArray } from "@/utils/year.utils";
 
 import { Select, SelectContent, SelectItem, SelectTrigger } from "../select";
-import { generateYearsArray } from "@/utils/year.utils";
 
 const Toolbar: FC<{
   displayedMonths: Month[];

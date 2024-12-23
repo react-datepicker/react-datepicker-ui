@@ -1,10 +1,10 @@
 import * as React from "react";
-
-import { Popover, PopoverContent } from "@/components/ui/popover";
 import dayjs from "dayjs";
 
-import Calendar from "./calendar/Calendar";
+import { Popover, PopoverContent } from "@/components/ui/popover";
 import { CalendarOptions } from "@/types/calendarOptions.types";
+
+import Calendar from "./calendar/Calendar";
 import DateInput from "./dateInput";
 
 const DatePicker: React.FC<CalendarOptions<false>> = (calendarOptions) => {

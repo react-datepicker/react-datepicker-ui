@@ -2,7 +2,9 @@ import dayjs, { Dayjs } from "dayjs";
 import weekDay from "dayjs/plugin/weekday";
 import isBetween from "dayjs/plugin/isBetween";
 import localeData from "dayjs/plugin/localeData";
-import { Day, Month, MonthName } from "../types/month.types";
+
+import { Day, Month, MonthName } from "@/types/month.types";
+
 import { LocaleKey, LocaleWeekends } from "./locale.utils";
 
 dayjs.extend(weekDay);

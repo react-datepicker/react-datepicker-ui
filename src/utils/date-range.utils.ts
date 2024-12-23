@@ -1,6 +1,8 @@
 import { Dayjs } from "dayjs";
-import { isAfterDay } from "./dates.utils";
+
 import { DateRange } from "@/types/range.type";
+
+import { isAfterDay } from "./dates.utils";
 
 export const isInRange = (
   date: Dayjs,

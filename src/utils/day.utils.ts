@@ -1,3 +1,6 @@
+import { Day } from "@/types/calendar.types";
+import { CalendarOptions } from "@/types/calendarOptions.types";
+
 import {
   getDateByYearAndMonth,
   getDaysInMonthByDate,
@@ -6,8 +9,6 @@ import {
   isWeekend,
   newDate,
 } from "./dates.utils";
-import { Day } from "../types/calendar.types";
-import { CalendarOptions } from "../types/calendarOptions.types";
 
 export const isDateDisabled = (
   date: Date,
