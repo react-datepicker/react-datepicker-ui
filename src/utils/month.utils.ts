@@ -3,7 +3,12 @@ import dayjs from "dayjs";
 import { Month } from "@/types/calendar.types";
 import { CalendarOptions } from "@/types/calendarOptions.types";
 
-import { getDateByYearAndMonth, getMonthNameByDate } from "./dates.utils";
+import {
+  addMonthsToDate,
+  getDateByYearAndMonth,
+  getMonthNameByDate,
+  newDate,
+} from "./dates.utils";
 import { generateDaysForMonth } from "./day.utils";
 import { getWeeksForDays } from "./week.utils";
 
@@ -29,6 +34,18 @@ const createMonthFromDate = (
     days,
     weeks: getWeeksForDays(days, calendarOptions),
   };
+};
+
+export const generateMonthsByDate = (
+  date: dayjs.Dayjs,
+  calendarOptions: CalendarOptions<boolean>
+): Month[] => {
+  return Array.from({
+    length: calendarOptions.numberOfDisplayedMonths || 1,
+  }).map((_, monthIndex) => {
+    const currentMonth = addMonthsToDate(date, monthIndex);
+    return createMonthFromDate(currentMonth, calendarOptions);
+  });
 };
 
 export const getPreviousMonthForDisplayedMonths = (
@@ -90,4 +107,13 @@ export const getNewMonthsForYear = (
     const newDate = getDateByYearAndMonth(year, month.number);
     return createMonthFromDate(newDate, calendarOptions);
   });
+};
+
+export const generateMonthsByYearAndMonths = (
+  year: number,
+  months: Month[],
+  calendarOptions: CalendarOptions<boolean>
+): Month[] => {
+  let desiredYearDate = newDate(months[0].days[0].date).set("year", year);
+  return generateMonthsByDate(desiredYearDate, calendarOptions);
 };

@@ -7,7 +7,7 @@ import {
 } from "@/types/calendarOptions.types";
 import { getDefaultDisPlayedMonths } from "@/utils/default.utils";
 import {
-  getNewMonthsForYear,
+  generateMonthsByYearAndMonths,
   getNextMonthForDisplayedMonths,
   getNextYearForDisplayedMonths,
   getPreviousMonthForDisplayedMonths,
@@ -117,10 +117,17 @@ const useCalendar = <IsRange extends boolean>(
     }
   };
 
-  const setYear = (year: number) => {
-    const newMonths = getNewMonthsForYear(displayedMonths, year, options);
-    setDisplayedMonths(newMonths);
-  };
+  const setYear = useCallback(
+    (year: number) => {
+      const newMonths = generateMonthsByYearAndMonths(
+        year,
+        displayedMonths,
+        options
+      );
+      setDisplayedMonths(newMonths);
+    },
+    [displayedMonths, options]
+  );
 
   const register: Register = (
     month: Month,
