@@ -114,6 +114,6 @@ export const generateMonthsByYearAndMonths = (
   months: Month[],
   calendarOptions: CalendarOptions<boolean>
 ): Month[] => {
-  let desiredYearDate = newDate(months[0].days[0].date).set("year", year);
+  const desiredYearDate = newDate(months[0].days[0].date).set("year", year);
   return generateMonthsByDate(desiredYearDate, calendarOptions);
 };
