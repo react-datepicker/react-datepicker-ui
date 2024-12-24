@@ -2,7 +2,7 @@
     "name": "@react-datepicker/ui",
     "private": false,
     "package-name": "@react-datepicker/ui",
-    "version": "0.1.0",
+    "version": "0.0.0-semantically-released",
     "type": "module",
     "scripts": {
         "dev": "vite",
@@ -55,12 +55,12 @@
     "main": "src/index.ts",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/react-datepicker/useCalendar.git"
+        "url": "git@github.com:react-datepicker/react-datepicker-ui.git"
     },
     "author": "Ariel Mints",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/react-datepicker/useCalendar/issues"
+        "url": "https://github.com/react-datepicker/react-datepicker-ui/issues"
     },
-    "homepage": "https://github.com/react-datepicker/useCalendar#readme"
+    "homepage": "https://github.com/react-datepicker/react-datepicker-ui#readme"
 }
