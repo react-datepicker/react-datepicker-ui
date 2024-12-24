@@ -1,22 +1,21 @@
-name: Check PR Title
+name: "Lint PR"
 
 on:
-  pull_request:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+permissions:
+  pull-requests: read
 
 jobs:
-  check-title:
-    name: Validate PR Title
+  main:
+    name: Validate PR title
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Validate PR Title
-        run: |
-          if ! echo "${{ github.event.pull_request.title }}" | grep -E "^(feat|fix|docs|style|refactor|test|chore|perf|build|ci|revert|BREAKING CHANGE)(\(.+\))?: .{1,}$"; then
-            echo "❌ Pull request title '${{ github.event.pull_request.title }}' does not follow Conventional Commits."
-            exit 1
-          else
-            echo "✅ Pull request title follows Conventional Commits."
-          fi
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
