@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo, SetStateAction } from "react";
 import { Dayjs } from "dayjs";
 
 import { isBeforeDay, isSame, newDate } from "@/utils/dates.utils";
-import { DateRange } from "@/types/range.type";
+import { DateRange } from "@/types/range.types";
 import { Day } from "@/types/calendar.types";
 import { isInRange } from "@/utils/date-range.utils";
 import { CalendarOptions } from "@/types/calendarOptions.types";
