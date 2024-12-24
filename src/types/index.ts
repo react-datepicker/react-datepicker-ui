@@ -1,3 +1,3 @@
 export * from "./calendar.types";
 export * from "./calendarOptions.types";
-export * from "./range.typess";
+export * from "./range.types";
