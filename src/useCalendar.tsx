@@ -16,7 +16,7 @@ import {
 import { getWeekdays, isDate, isSame, newDate } from "@/utils/dates.utils";
 import { Day, Month, Register } from "@/types/calendar.types";
 import { useDateRangePicker } from "@/useDateRange";
-import { DateRange } from "@/types/range.type";
+import { DateRange } from "@/types/range.types";
 import { isDateRange } from "@/utils/date-range.utils";
 
 const useCalendar = <IsRange extends boolean>(

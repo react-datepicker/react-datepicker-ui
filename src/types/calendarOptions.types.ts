@@ -1,7 +1,7 @@
 import { LocaleKey } from "@/utils/locale.utils";
 
 import { MonthName } from "./month.types";
-import { DateRange } from "./range.types";
+import { DateRange } from "./range.typess";
 
 export type DateValue<IsRange extends boolean> = IsRange extends true
   ? DateRange | undefined | null

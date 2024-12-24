@@ -1,6 +1,6 @@
 import { Dayjs } from "dayjs";
 
-import { DateRange } from "@/types/range.type";
+import { DateRange } from "@/types/range.types";
 
 import { isAfterDay } from "./dates.utils";
 

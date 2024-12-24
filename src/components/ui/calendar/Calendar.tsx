@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-import { DateRange } from "@/types/range.type";
+import { DateRange } from "@/types/range.types";
 import { CalendarOptions } from "@/types/calendarOptions.types";
 
 import useCalendar from "../../../useCalendar";

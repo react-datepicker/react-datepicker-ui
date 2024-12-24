@@ -2,13 +2,12 @@ import * as React from "react";
 import dayjs from "dayjs";
 
 import { Popover, PopoverContent } from "@/components/ui/popover";
-import { DateRange } from "@/types/range.type";
+import { DateRange } from "@/types/range.types";
 import { CalendarOptions } from "@/types/calendarOptions.types";
 import { DATE_DISPLAY_SHORT_FORMAT } from "@/utils/dates.utils";
 
 import Calendar from "./calendar/Calendar";
 import DateInput from "./dateInput";
-
 
 const RangeDatePicker: React.FC<CalendarOptions<true>> = (calendarOptions) => {
   const [date, setDate] = React.useState<DateRange | null | undefined>({
