@@ -7,18 +7,21 @@ import { CalendarOptions } from "@/types/calendarOptions.types";
 import Calendar from "./calendar/Calendar";
 import DateInput from "./dateInput";
 
-const DatePicker: React.FC<CalendarOptions<false>> = (calendarOptions) => {
-  const [date, setDate] = React.useState<Date | null | undefined>();
-
+const DatePicker: React.FC<
+  CalendarOptions<false> & {
+    value: Date | null | undefined;
+    onChange: React.Dispatch<React.SetStateAction<Date | null | undefined>>;
+  }
+> = ({ value, onChange, ...calendarOptions }) => {
   const formattedDateLabel = React.useMemo(() => {
-    return date ? dayjs(date).format("MMM D, YYYY") : "Pick a date";
-  }, [date]);
+    return value ? dayjs(value).format("MMM D, YYYY") : "Pick a date";
+  }, [value]);
 
   return (
     <Popover>
-      <DateInput isEmpty={!date} label={formattedDateLabel} />
+      <DateInput isEmpty={!value} label={formattedDateLabel} />
       <PopoverContent className="w-auto p-0" align="start">
-        <Calendar {...calendarOptions} value={date} onChange={setDate} />
+        <Calendar {...calendarOptions} value={value} onChange={onChange} />
       </PopoverContent>
     </Popover>
   );
