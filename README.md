@@ -28,6 +28,16 @@ npm install react-datepicker/ui
 #### **Basic Usage**
 **Components**
 ```tsx
+import { useState } from "react";
+import DatePicker from "@/components/ui/datePicker";
+
+function App() {
+  const [date, setDate] = useState<Date | null | undefined>();
+
+  return <DatePicker value={date} onChange={setDate} />;
+}
+
+export default App;
 
 ```
 **Hook - Uncontrolled**
