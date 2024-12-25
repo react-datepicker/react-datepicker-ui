@@ -1,13 +1,18 @@
-[![CI & Tests](https://github.com/react-datepicker/useCalendar/actions/workflows/ci.yml/badge.svg)](https://github.com/react-datepicker/useCalendar/actions/workflows/ci.yml)
+<div align="center">
+  <div>
+<a href="[https://github.com/semantic-release/semantic-release/actions/workflows/test.yml](https://github.com/react-datepicker/useCalendar/actions/workflows/ci.yml)">
+  <img alt="Build states" src="https://github.com/react-datepicker/useCalendar/actions/workflows/ci.yml/badge.svg">
+</a>
 <image src="https://badgen.net/bundlephobia/minzip/@react-datepicker/ui" />
-
+</div>
+<br />
 <image src="https://github.com/user-attachments/assets/7061d873-5f25-405f-b1ce-aa1bdeb0e332" height="200px" width="200px" align="center" />
+</div>
+<br />
+  
+**@react-datepicker/ui** is a customizable, headless React calendar hooks library that empowers developers to build powerful and flexible calendar and date-picker components. In addition to providing full control over styling and functionality for highly tailored solutions, the library features beautifully designed, ready-to-use, and fully customizable components to streamline development."
 
-# react-datepicker
-
-A customizable, headless React calendar hooks library for building powerful and flexible calendar and date-picker components. With **react-datepicker**, developers have complete control over styling and functionality, enabling the creation of highly tailored solutions.
-
-### **Features**
+#### **Features**
 
 - Multi-date selection and date range support.
 - Localization and ARIA-compliant accessibility.
@@ -15,26 +20,50 @@ A customizable, headless React calendar hooks library for building powerful and 
 
 ---
 
-## **Installation**
-
-### PNPM
-
-```bash
-pnpm add react-datepicker/ui
-```
-
-### NPM
-
+#### **Installation**
 ```bash
 npm install react-datepicker/ui
 ```
 
-### YARN
+#### **Basic Usage**
+**Components**
+```tsx
 
-```bash
-yarn add react-datepicker/ui
+```
+**Hook - Uncontrolled**
+```tsx
+  const {
+    value, // rangeValue for date range when isDateRange is true
+    displayedMonths,
+    register,
+    nextMonth,
+    previousMonth,
+    weekDays,
+    shouldHighlightDay,
+    isSelected,
+    setYear,
+  } = useCalendar( 
+    { numberOfDisplayedMonths: 2 },
+  );
 ```
 
-## **Get Started**
+##### **Hook - Controlled**
+```tsx
+  const {
+    displayedMonths,
+    register,
+    nextMonth,
+    previousMonth,
+    weekDays,
+    shouldHighlightDay,
+    isSelected,
+    setYear,
+  } = useCalendar(
+    { numberOfDisplayedMonths: 2 },
+    // For controlled usage - pass value and onChange to the hook
+    value,
+    (date) => onChange(date)
+  );
+```
 
 Refer to the [Documentation](https://github.com/react-datepicker/useCalendar/wiki) for detailed usage examples and customization options.
