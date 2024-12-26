@@ -1,7 +1,7 @@
 {
-  "name": "@react-datepicker/ui",
+  "name": "@react-datepicker/hooks",
   "private": false,
-  "package-name": "@react-datepicker/ui",
+  "package-name": "@react-datepicker/hooks",
   "version": "0.0.0-semantically-released",
   "type": "module",
   "scripts": {
@@ -13,19 +13,9 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@heroicons/react": "^2.2.0",
-    "@radix-ui/react-popover": "^1.1.3",
-    "@radix-ui/react-select": "^2.1.3",
-    "@radix-ui/react-separator": "^1.1.1",
-    "@radix-ui/react-slot": "^1.1.1",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
-    "lucide-react": "^0.468.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwind-merge": "^2.5.5",
-    "tailwindcss-animate": "^1.0.7"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
@@ -45,7 +35,6 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
     "jsdom": "^25.0.1",
-    "postcss": "^8.4.49",
     "semantic-release": "^24.2.0",
     "tailwindcss": "^3.4.16",
     "turbo": "^2.3.3",
@@ -56,7 +45,7 @@
     "vitest": "^2.1.8"
   },
   "description": "Create beautiful, fully customizable React datepickers and calendars with limitless styling and functionality options.",
-  "main": "packages/hooks/src/index.ts",
+  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:react-datepicker/react-datepicker-ui.git"
@@ -88,10 +77,5 @@
     "custom datepicker",
     "react date utilities",
     "react date range selector"
-  ],
-  "packageManager": "npm@10.8.3",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
   ]
 }
