@@ -36,8 +36,21 @@ describe("dates.utils", () => {
 
   describe("getDateByDayMonthAndYear", () => {
     it("should create correct date from day, month and year", () => {
-      const day: Day = { number: 15 };
-      const month: Month = { name: MonthName.March, year: 2024, days: [] };
+      const day: Day = {
+        number: 15,
+        date: new Date("2024-03-15"),
+        disabled: false,
+        isToday: false,
+        isWeekend: false,
+        isInCurrentMonth: true,
+      };
+      const month: Month = {
+        name: MonthName.March,
+        number: 3,
+        year: 2024,
+        days: [],
+        weeks: [],
+      };
       const year = 2024;
 
       const result = getDateByDayMonthAndYear(day, month, year);
