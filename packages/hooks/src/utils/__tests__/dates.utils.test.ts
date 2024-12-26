@@ -9,7 +9,7 @@ import {
   isBetweenDates,
   isDate,
 } from "../dates.utils";
-import { Day, Month, MonthName } from "../../types/month.types";
+import { Day, Month, MonthName } from "@react-datepicker/types";
 
 describe("dates.utils", () => {
   describe("getWeekdays", () => {

@@ -1,5 +1,5 @@
 import { generateMonthsByYearAndMonths } from "../month.utils";
-import { Month, MonthName } from "@/types/calendar.types";
+import { Month, MonthName } from "@react-datepicker/types";
 
 import { describe, expect, it } from "vitest";
 
