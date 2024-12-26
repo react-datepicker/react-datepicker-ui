@@ -5,11 +5,9 @@
   "version": "0.0.0-semantically-released",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "check-types": "tsc --noEmit",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
     "lint": "eslint .",
-    "preview": "vite preview",
     "test": "vitest"
   },
   "dependencies": {
