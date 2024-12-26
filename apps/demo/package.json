@@ -1,14 +1,13 @@
 {
-  "name": "@react-datepicker/ui",
+  "name": "@react-datepicker/demo-app",
   "private": false,
-  "package-name": "@react-datepicker/ui",
-  "version": "0.0.0-semantically-released",
   "type": "module",
   "scripts": {
-    "dev": "turbo run dev --filter=@react-datepicker/hooks",
-    "build": "turbo run build --filter=@react-datepicker/hooks",
+    "dev": "vite",
+    "build": "vite build",
+    "check-types": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "turbo run test --filter=@react-datepicker/hooks"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -52,44 +51,5 @@
     "vite": "^6.0.5",
     "vite-plugin-dts": "^4.4.0",
     "vitest": "^2.1.8"
-  },
-  "description": "Create beautiful, fully customizable React datepickers and calendars with limitless styling and functionality options.",
-  "main": "packages/hooks/src/index.ts",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:react-datepicker/react-datepicker-ui.git"
-  },
-  "author": "Ariel Mints",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/react-datepicker/react-datepicker-ui/issues"
-  },
-  "homepage": "https://docs.react-calendar-ui.com",
-  "keywords": [
-    "react",
-    "react datepicker",
-    "react calendar",
-    "react hooks",
-    "ui components",
-    "react ui library",
-    "datepicker",
-    "calendar",
-    "date input",
-    "date picker",
-    "date range picker",
-    "date selection",
-    "date range",
-    "react date range",
-    "date range selection",
-    "react date input",
-    "calendar picker",
-    "custom datepicker",
-    "react date utilities",
-    "react date range selector"
-  ],
-  "packageManager": "npm@10.8.3",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  }
 }

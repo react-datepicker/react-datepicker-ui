@@ -5,10 +5,11 @@
   "version": "0.0.0-semantically-released",
   "type": "module",
   "scripts": {
-    "dev": "turbo run dev --filter=@react-datepicker/hooks",
-    "build": "turbo run build --filter=@react-datepicker/hooks",
+    "dev": "vite",
+    "build": "vite build",
+    "check-types": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "turbo run test --filter=@react-datepicker/hooks"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -54,7 +55,7 @@
     "vitest": "^2.1.8"
   },
   "description": "Create beautiful, fully customizable React datepickers and calendars with limitless styling and functionality options.",
-  "main": "packages/hooks/src/index.ts",
+  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:react-datepicker/react-datepicker-ui.git"
