@@ -62,5 +62,27 @@
     "bugs": {
         "url": "https://github.com/react-datepicker/react-datepicker-ui/issues"
     },
-    "homepage": "https://docs.react-calendar-ui.com"
+    "homepage": "https://docs.react-calendar-ui.com",
+  "keywords": [
+    "react",
+    "react datepicker",
+    "react calendar",
+    "react hooks",
+    "ui components",
+    "react ui library",
+    "datepicker",
+    "calendar",
+    "date input",
+    "date picker",
+    "date range picker",
+    "date selection",
+    "date range",
+    "react date range",
+    "date range selection",
+    "react date input",
+    "calendar picker",
+    "custom datepicker",
+    "react date utilities",
+    "react date range selector"
+]
 }
