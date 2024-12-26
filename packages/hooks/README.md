@@ -28,7 +28,7 @@ npm install @react-datepicker/hooks
 
 ### **Basic Usage**
 
-Refer to the [Documentation](https://docs.react-calendar-ui.com/react-datepicker-ui-1) for detailed usage examples and customization options.
+Refer to the [Documentation](https://docs.react-calendar-ui.com) for detailed usage examples and customization options.
 
 ```tsx
 import { useCalendar } from "@react-datepicker/ui";
