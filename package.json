@@ -5,10 +5,10 @@
   "version": "0.0.0-semantically-released",
   "type": "module",
   "scripts": {
-    "dev": "turbo run dev --filter=hooks",
-    "build": "turbo run build --filter=hooks",
+    "dev": "turbo run dev --filter=@react-datepicker/hooks",
+    "build": "turbo run build --filter=@react-datepicker/hooks",
     "lint": "eslint .",
-    "test": "turbo run test --filter=hooks"
+    "test": "turbo run test --filter=@react-datepicker/hooks"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
