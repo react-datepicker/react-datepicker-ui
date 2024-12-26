@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import RangeDatePicker from "@/components/ui/rangeDatePicker";
-import DatePicker from "@/components/ui/datePicker";
+import { RangeDatePicker } from "@/components/ui/rangeDatePicker";
+import { DatePicker } from "@/components/ui/datePicker";
 import { DateRange } from "@/types";
 
 import "./App.css";

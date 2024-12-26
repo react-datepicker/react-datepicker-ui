@@ -9,7 +9,7 @@ import { DATE_DISPLAY_SHORT_FORMAT } from "@/utils/dates.utils";
 import Calendar from "./calendar/Calendar";
 import DateInput from "./dateInput";
 
-const RangeDatePicker: React.FC<
+export const RangeDatePicker: React.FC<
   CalendarOptions<true> & {
     value: DateRange | null | undefined;
     onChange: React.Dispatch<
@@ -41,5 +41,3 @@ const RangeDatePicker: React.FC<
     </Popover>
   );
 };
-
-export default RangeDatePicker;

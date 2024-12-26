@@ -7,7 +7,7 @@ import { CalendarOptions } from "@/types/calendarOptions.types";
 import Calendar from "./calendar/Calendar";
 import DateInput from "./dateInput";
 
-const DatePicker: React.FC<
+export const DatePicker: React.FC<
   CalendarOptions<false> & {
     value: Date | null | undefined;
     onChange: React.Dispatch<React.SetStateAction<Date | null | undefined>>;
@@ -26,5 +26,3 @@ const DatePicker: React.FC<
     </Popover>
   );
 };
-
-export default DatePicker;
