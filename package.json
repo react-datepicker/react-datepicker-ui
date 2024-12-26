@@ -5,10 +5,10 @@
   "version": "0.0.0-semantically-released",
   "type": "module",
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
+    "dev": "turbo run dev --filter=hooks",
+    "build": "turbo run build --filter=hooks",
     "lint": "eslint .",
-    "test": "turbo run test"
+    "test": "turbo run test --filter=hooks"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
