@@ -4,6 +4,17 @@
   "package-name": "@react-datepicker/hooks",
   "version": "0.0.0-semantically-released",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/react-datepicker-hooks.umd.cjs",
+  "module": "dist/react-datepicker-hooks.js",
+  "exports": {
+    ".": {
+      "import": "./dist/react-datepicker-hooks.js",
+      "require": "./dist/react-datepicker-hooks.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -45,7 +56,6 @@
     "vitest": "^2.1.8"
   },
   "description": "Create beautiful, fully customizable React datepickers and calendars with limitless styling and functionality options.",
-  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:react-datepicker/react-datepicker-ui.git"

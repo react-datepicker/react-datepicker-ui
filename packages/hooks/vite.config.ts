@@ -9,8 +9,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "@react-datepicker/ui",
-      fileName: "react-datepicker-ui",
+      name: "@react-datepicker/hooks",
+      fileName: "react-datepicker-hooks",
     },
     rollupOptions: {
       external: ["react", "react-dom"],
@@ -24,7 +24,10 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    dts({ tsconfigPath: "./tsconfig.json" }),
+    dts({
+      tsconfigPath: "./tsconfig.json",
+      include: ["src/**/*", "../types/src/**/*"],
+    }),
     alias({
       entries: [
         { find: "@/utils", replacement: path.resolve(__dirname, "src/utils") },
@@ -44,12 +47,16 @@ export default defineConfig({
           find: "@/types",
           replacement: path.resolve(__dirname, "src/types"),
         },
+        {
+          find: "@react-datepicker/types",
+          replacement: path.resolve(__dirname, "../types/src"),
+        },
       ],
     }),
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@react-datepicker/types": path.resolve(__dirname, "../types/src"),
     },
   },
 });
