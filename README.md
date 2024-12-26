@@ -21,74 +21,45 @@
 
 ---
 
-#### **Installation**
+### **Installation**
 ```bash
 npm install react-datepicker/ui
 ```
 
-#### **Basic Usage**
-**Components**
-DatePicker
+### **Basic Usage**
+Refer to the [Documentation](https://docs.react-calendar-ui.com/react-datepicker-ui-1) for detailed usage examples and customization options.
+
+Components
 ```tsx
 import { useState } from "react";
-import DatePicker from "@react-datepicker/ui";
+import { DatePicker, DateRange } from "@react-datepicker/ui";
 
 function App() {
+  // Single date
   const [date, setDate] = useState<Date | null | undefined>();
 
   return <DatePicker value={date} onChange={setDate} />;
+
+  // Range date
+  const [dateRange, setDateRange] = useState<DateRange | null | undefined>();
+
+  return <RangeDatePicker value={dateRange} onChange={setDateRange} />;
 }
 
 export default App;
 
 ```
 
-RangeDatePicker
-```tsx
-import { useState } from "react";
-import { RangeDatePicker, DateRange } from "@react-datepicker/ui";
-
-function App() {
-  const [date, setDate] = useState<DateRange | null | undefined>();
-
-  return (
-      <RangeDatePicker value={date} onChange={setDate} />
-  );
-}
-
-export default App;
-```
-**Hook - Uncontrolled**
+Hook
 ```tsx
   import { useCalendar } from "@react-datepicker/ui";
 
-  const {
-    value, // rangeValue for date range when isDateRange is true
-    displayedMonths,
-    register,
-    nextMonth,
-    previousMonth,
-    weekDays,
-    shouldHighlightDay,
-    isSelected,
-    setYear,
-  } = useCalendar( 
-    { numberOfDisplayedMonths: 2 },
-  );
-```
-
-##### **Hook - Controlled**
-```tsx
-  import { useCalendar } from "@react-datepicker/ui";
-
+  // Controlled - pass value and onChange
   const {
     displayedMonths,
     register,
     nextMonth,
     previousMonth,
-    weekDays,
-    shouldHighlightDay,
-    isSelected,
     setYear,
   } = useCalendar(
     { numberOfDisplayedMonths: 2 },
@@ -96,6 +67,16 @@ export default App;
     value,
     (date) => onChange(date)
   );
-```
 
-Refer to the [Documentation](https://github.com/react-datepicker/useCalendar/wiki) for detailed usage examples and customization options.
+  // Uncontrolled - state managed within the hook
+  const {
+    value, // rangeValue for date range when isDateRange is true
+    displayedMonths,
+    register,
+    nextMonth,
+    setYear,
+  } = useCalendar( 
+    { numberOfDisplayedMonths: 2 },
+  );
+
+```
